@@ -1,7 +1,4 @@
-import requests
-requisicao = requests.get('https://economia.awesomeapi.com.br/all/USD-BRL')
-cotacao = requisicao.json()
-dolar_in_real = float(cotacao['USD']['bid'])
+from src.requests.requests import dolar_in_real
 
 
 #Função que converte dolar para real
@@ -14,7 +11,7 @@ def dolar_to_real(dolar):
 
 #Função que converte real para dolar
 def real_to_dolar(real):
-    dolar = real * 0.19
+    dolar = real / dolar_in_real
     print(f'''
     R${real :.2f} = Real
     ${dolar :.2f} = Dólar
